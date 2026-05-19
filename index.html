@@ -1,75 +1,391 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <title>Sungwoo Goo | Curriculum Vitae</title>
-  <style>
-    section { margin-bottom: 3rem; }
-    h2 { border-bottom: 1px solid var(--pico-muted-border-color); padding-bottom: 0.5rem; }
-    .date { text-align: right; color: var(--pico-muted-color); font-size: 0.9rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>Goo, Sungwoo | CV</title>
+    
+    <style>
+        :root { --pico-font-size: 100%; }
+        section { margin-bottom: 2rem; }
+        h2 { border-bottom: 1px solid var(--pico-muted-border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .date { text-align: right; color: var(--pico-muted-color); font-size: 0.9rem; }
+        .no-print { display: inline-block; }
+        
+        /* 헤더 8:2 비율을 위한 커스텀 클래스 */
+        .grid-profile { grid-template-columns: 3fr 1fr; }
+        header.grid-profile img { margin-bottom: 1rem; }
+        
+        /* 모바일에서는 1열로 변경 */
+        @media (max-width: 991px) { 
+            .grid-profile { grid-template-columns: 1fr; } 
+        }
+        @media (min-width: 992px) {
+            header.grid-profile img { margin-bottom: 0; margin-left: auto; }
+        }
+
+        header.grid-profile {
+            margin-bottom: 3rem;
+        }
+
+        /* 모바일에서는 간격을 조금 줄여서 가독성 유지 */
+        @media (max-width: 991px) {
+            header.grid-profile {
+                margin-bottom: 3rem;
+            }
+        }
+
+        /* 인쇄 시에는 너무 여백이 크면 공간이 아까우므로 적절히 조절 */
+        @media print {
+            header.grid-profile {
+                margin-bottom: 2rem !important;
+            }
+        }
+        
+
+        /* 인쇄 최적화 */
+        @media print {
+            /* 1. 종이 자체의 물리적 여백 설정 (가장 중요) */
+            @page {
+                margin: 1.5cm;
+            }
+
+            :root { color-scheme: light !important; }
+            body { background: white !important; color: black !important; margin: 0; padding: 0; }
+            .no-print, nav, #theme-toggle { display: none !important; }
+            
+            /* 2. 메인 컨테이너 너비를 여백에 맞춰 조절 */
+            main.container { 
+                max-width: 100% !important; 
+                width: 100% !important; 
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* 3. 헤더 그리드: 텍스트는 꽉 채우고(1fr), 사진은 필요한 만큼만(auto) */
+            .grid-profile { 
+                display: grid !important;
+                grid-template-columns: 1fr auto !important; 
+                gap: 2rem !important;
+                align-items: center;
+            }
+
+            /* 4. 사진이 오른쪽 끝 여백에 걸리지 않도록 안쪽 여백 추가 */
+            header.grid-profile div:last-child {
+                padding-right: 0.5cm; 
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            header.grid-profile img { 
+                max-width: 110px !important; /* 인쇄용 사이즈로 약간 축소 */
+                box-shadow: none !important; /* 인쇄 시 그림자는 지저분해 보일 수 있어 제거 */
+                border: 1px solid #eee !important;
+            }
+
+            /* 경력/학력 나란히 유지 */
+            .print-grid { 
+                display: grid !important; 
+                grid-template-columns: 1fr 1fr !important; 
+                gap: 2rem; 
+            }
+
+            h1 { 
+                font-size: 1.25rem !important; /* 약 24px 느낌 */
+                margin-bottom: 0.5rem !important; 
+            }
+            h2 { 
+                font-size: 1rem !important; /* 약 20px 느낌 */
+                margin-bottom: 0.8rem !important; 
+                padding-bottom: 0.2rem !important; 
+            }
+            h3 { 
+                font-size: 0.9rem !important; /* 약 17px 느낌 */
+                margin-bottom: 0.5rem !important; 
+            }
+            
+            article { border: 1px solid #eee; page-break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+
+            article {
+                font-size: 0.5rem !important; /* 전체 기본 폰트 크기 축소 */
+                line-height: 1.3 !important;  /* 줄 간격 살짝 좁힘 */
+                padding: 0.2rem !important;   /* 카드 안쪽 여백 축소 */
+                margin-bottom: 0.1rem !important; /* 카드 사이 간격 축소 */
+            }
+
+            /* 2. 논문 제목(strong) 크기 미세 조정 */
+            article strong {
+                font-size: 0.9rem !important; /* 본문보다는 약간 크게 하여 강조 유지 */
+                display: block; /* 제목이 확실히 한 줄을 차지하게 함 */
+                margin-bottom: 0.1rem;
+            }
+
+            /* 3. 저자 및 저널 정보(small) 크기 축소 */
+            article small {
+                font-size: 0.75rem !important; 
+                color: #444 !important; /* 인쇄 시 너무 흐리지 않은 회색 */
+            }
+
+            /* 4. 링크 버튼(footer) 크기 및 간격 조절 */
+            article footer {
+                margin-top: 0.1rem !important;
+                padding: 0 !important;
+            }
+            
+            article footer a {
+                font-size: 0.7rem !important;
+                padding: 2px 8px !important; /* 버튼 크기 축소 */
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Person", "name": "Goo, Sungwoo", "profile_image": "profile.jpg", "jobTitle": "Postdoctoral Researcher / Bio AI Researcher", "affiliation": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University", "email": "swgoo91@gmail.com", "location": "Daejeon, South Korea", "orcid": "0000-0003-2809-5921", "linkedin": "https://www.linkedin.com/in/swgoo", "github": "https://github.com/swgoo", "research_interests": ["Next-Generation Neural Architectures & Learning Mechanics", "Stable Backpropagation & Long-Context Explicit Memory", "Continual Learning & Memory Consolidation Models", "Dynamical Systems in Deep Learning (Inspired by Pharmacometrics & QSP)"], "experience": [{"title": "Postdoctoral Researcher", "period": "2026.03 - Present", "organization": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University"}, {"title": "Postdoctoral Researcher", "period": "2024.09 - 2026.02", "organization": "Institute of Drug Research and Development, College of Pharmacy, Chungnam National University"}], "education": [{"degree": "Ph.D. in Bio AI Convergence", "period": "2021.09 - 2024.08", "school": "Chungnam National University"}, {"degree": "Master of Pharmacy", "period": "2016.03 - 2018.02", "school": "Chungnam National University"}, {"degree": "Pharm Doctor (PharmD)", "period": "2012.03 - 2016.02", "school": "Chungnam National University"}], "skills": {"Languages": "Python, R", "Frameworks": "PyTorch, NONMEM"}, "other": [{"title": "Military Service", "period": "2019.06 - 2021.04"}, {"title": "Local Pharmacy", "period": "2018.03 - 2019.05"}]}
+    </script>
 </head>
 <body>
+    <nav class="container">
+        <ul><li><strong>Goo, Sungwoo</strong></li></ul>
+        <ul>
+            <li><a href="https://github.com/swgoo" target="_blank" class="no-print">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/swgoo" target="_blank" class="no-print">LinkedIn</a></li>
+            <li><a href="#" id="theme-toggle" role="button" class="outline contrast no-print">🌙</a></li>
+        </ul>
+    </nav>
 
-  <nav class="container">
-    <ul>
-      <li><strong>Sungwoo Goo</strong></li>
-    </ul>
-    <ul>
-      <li><a href="mailto:swgoo91@gmail.com">Email</a></li>
-      <li><a href="https://github.com/swgoo" target="_blank">GitHub</a></li>
-      <!-- <li><a href="https://scholar.google.com/..." target="_blank">Scholar</a></li> -->
-    </ul>
-  </nav>
+    <main class="container">
+        
+        <header class="grid grid-profile">
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h1>Goo, Sungwoo</h1>
+                <p>Postdoctoral Researcher / Bio AI Researcher<br>Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University</p>
+                <small style="display: grid; grid-template-columns: 80px 1fr; gap: 0.2rem 0.5rem; align-items: baseline;">
+                    <span>Location:</span>
+                    <span>Daejeon, South Korea</span>
 
-  <main class="container">
+                    <span>Email:</span>
+                    <a href="mailto:swgoo91@gmail.com">swgoo91@gmail.com</a>
+
+                    <span>ORCID:</span>                    
+                    <a href="https://orcid.org/0000-0003-2809-5921">0000-0003-2809-5921</a>
+
+                    <span>Github:</span>
+                    <a href="https://github.com/swgoo" target="_blank">https://github.com/swgoo</a>
+
+                    <span>LinkedIn:</span>
+                    <a href="https://www.linkedin.com/in/swgoo" target="_blank">https://www.linkedin.com/in/swgoo</a>
+                </small>
+            </div>
+            <div style="display: flex; justify-content: flex-end; align-items: center;">
+                
+                <img src="profile.jpg" alt="Goo, Sungwoo" 
+                     style="width: 100%; max-width: 150px; border-radius: 10%; border: 1px solid var(--pico-muted-border-color); box-shadow: var(--pico-card-sectioning-background-color) 0px 4px 10px;">
+                
+            </div>
+        </header>
+
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="grid">
+                <ul>
+                
+                    <li>Next-Generation Neural Architectures & Learning Mechanics</li>
+                
+                    <li>Stable Backpropagation & Long-Context Explicit Memory</li>
+                
+                    <li>Continual Learning & Memory Consolidation Models</li>
+                
+                    <li>Dynamical Systems in Deep Learning (Inspired by Pharmacometrics & QSP)</li>
+                
+                </ul>
+            </div>
+        </section>
+
+        <div class="grid print-grid">
+            
+            <section id="experience">
+                <h2>Experience</h2>
+                
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; gap: 1rem;">
     
-    <header>
-      <h1>Bio AI Researcher</h1>
-      <p>..</p>
-    </header>
+                    <div style="word-break: keep-all; line-height: 1.4;">
+                        <strong>Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University</strong><br>
+                        Postdoctoral Researcher
+                    </div>
+                    
+                    <div class="date" style="white-space: nowrap; flex-shrink: 0;">
+                        2026.03 - Present
+                    </div>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="grid">
-        <div><strong>충남대학교</strong>, Bio AI 융합 전공 박사</div>
-        <div class="date">2021.09 — 2024.09</div>
-      </div>
-    </section>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; gap: 1rem;">
+    
+                    <div style="word-break: keep-all; line-height: 1.4;">
+                        <strong>Institute of Drug Research and Development, College of Pharmacy, Chungnam National University</strong><br>
+                        Postdoctoral Researcher
+                    </div>
+                    
+                    <div class="date" style="white-space: nowrap; flex-shrink: 0;">
+                        2024.09 - 2026.02
+                    </div>
 
-    <!-- <section id="publications">
-      <h2>Publications</h2>
-      <p><small>BibTeX</small></p>
-      
-      <article>
-        <strong>Example Paper Title: How to automate CV with Pico CSS</strong><br>
-        <small>G. Hong, J. Doe, <i>International Conference on AI</i>, 2024</small>
-      </article>
+                </div>
+                
+            </section>
 
-    </section> -->
+            <section id="education">
+                <h2>Education</h2>
+                
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; gap: 1rem;">
+    
+                    <div style="word-break: keep-all; line-height: 1.4;">
+                        <strong>Chungnam National University</strong><br>
+                        Ph.D. in Bio AI Convergence
+                    </div>
+                    
+                    <div class="date" style="white-space: nowrap; flex-shrink: 0;">
+                        2021.09 - 2024.08
+                    </div>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid">
-        <div>
-          <strong>Languages</strong><br>
-          Python, R
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; gap: 1rem;">
+    
+                    <div style="word-break: keep-all; line-height: 1.4;">
+                        <strong>Chungnam National University</strong><br>
+                        Master of Pharmacy
+                    </div>
+                    
+                    <div class="date" style="white-space: nowrap; flex-shrink: 0;">
+                        2016.03 - 2018.02
+                    </div>
+
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; gap: 1rem;">
+    
+                    <div style="word-break: keep-all; line-height: 1.4;">
+                        <strong>Chungnam National University</strong><br>
+                        Pharm Doctor (PharmD)
+                    </div>
+                    
+                    <div class="date" style="white-space: nowrap; flex-shrink: 0;">
+                        2012.03 - 2016.02
+                    </div>
+
+                </div>
+                
+            </section>
+
         </div>
-        <div>
-          <strong>Frameworks</strong><br>
-          PyTorch
-        </div>
-      </div>
-    </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="grid">
+                
+                <div>
+                    <strong>Languages</strong><br>
+                    Python, R
+                </div>
+                
+                <div>
+                    <strong>Frameworks</strong><br>
+                    PyTorch, NONMEM
+                </div>
+                
+            </div>
+        </section>
 
-  </main>
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <article>
+                <strong>Phasor Memory Networks: Stable Backpropagation Through Time for Scalable Explicit Memory</strong><br>
+                <small>Goo, Sungwoo and Yun, Hwi-yeol and Jung, Sangkeun</small>
+                <br>
+                <small><i>arXiv</i>, 2026</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="https://arxiv.org/abs/2605.13370" target="_blank" class="no-print" style="font-size: 0.8rem;">10.48550/ARXIV.2605.13370</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Proteolysis-targeting Chimera efficacy prediction using a deep-learning–QSP model</strong><br>
+                <small>Goo, Sungwoo and Kim, Jina and Lee, Soyoung and Jung, Sangkeun and Chae, Jung-woo and Choi, Jae-mun and Yun, Hwi-yeol</small>
+                <br>
+                <small><i>Journal of Cheminformatics</i>, 2026</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.1186/S13321-026-01152-2" target="_blank" class="no-print" style="font-size: 0.8rem;">10.1186/s13321-026-01152-2</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Interpretable Deep Survival Analysis of Alzheimer’s Disease via Metabolic Genetic Variants</strong><br>
+                <small>Goo, Sungwoo and Lee, Soyoung and Chae, Jung-woo and Jung, Sangkeun and Yun, Hwi-yeol</small>
+                <br>
+                <small><i>Bioinformatics</i>, 2026</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.1093/bioinformatics/btag213" target="_blank" class="no-print" style="font-size: 0.8rem;">10.1093/bioinformatics/btag213</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Absorption Distribution Metabolism Excretion and Toxicity Property Prediction Utilizing a Pre-Trained Natural Language Processing Model and Its Applications in Early-Stage Drug Development</strong><br>
+                <small>Jung, Woojin and Goo, Sungwoo and Hwang, Taewook and Lee, Hyunjung and Kim, Young-Kuk and Chae, Jung-woo and Yun, Hwi-yeol and Jung, Sangkeun</small>
+                <br>
+                <small><i>Pharmaceuticals</i>, 2024</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.3390/PH17030382" target="_blank" class="no-print" style="font-size: 0.8rem;">10.3390/ph17030382</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Fine-tuning of BERT Model to Accurately Predict Drug–Target Interactions</strong><br>
+                <small>Kang, Hyeunseok and Goo, Sungwoo and Lee, Hyunjung and Chae, Jung-woo and Yun, Hwi-yeol and Jung, Sangkeun</small>
+                <br>
+                <small><i>Pharmaceutics</i>, 2022</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.3390/PHARMACEUTICS14081710" target="_blank" class="no-print" style="font-size: 0.8rem;">10.3390/pharmaceutics14081710</a></div>
+                
+            </article>
+            
+        </section>
 
-  <footer class="container">
-    <hr>
-    <small>Last updated: 2026.04.23 | Built with Pico CSS</small>
-  </footer>
+        <section id="other">
+            <h2>Other</h2>
+            
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; gap: 1rem;">
+                <div style="word-break: keep-all; line-height: 1.4;">Military Service</div>
+                <div class="date" style="white-space: nowrap; flex-shrink: 0;">2019.06 - 2021.04</div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; gap: 1rem;">
+                <div style="word-break: keep-all; line-height: 1.4;">Local Pharmacy</div>
+                <div class="date" style="white-space: nowrap; flex-shrink: 0;">2018.03 - 2019.05</div>
+            </div>
+            
+        </section>
 
+    </main>
+
+    <footer class="container">
+        <hr>
+        <center><small>Last updated: 2026.05.19</small></center>
+    </footer>
+
+    <script>
+        // 테마 토글
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const current = html.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', target);
+            toggle.textContent = target === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
 </body>
 </html>
