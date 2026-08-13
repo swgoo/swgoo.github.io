@@ -104,18 +104,6 @@
                 font-size: 0.9rem !important; /* 약 17px 느낌 */
                 margin-bottom: 0.5rem !important; 
             }
-
-            section {
-                break-inside: avoid;
-                page-break-inside: avoid; /* 구형 브라우저 호환용 */
-            }
-
-            section div[style*="display: flex"] {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            
             
             article { border: 1px solid #eee; page-break-inside: avoid; }
             a { text-decoration: none; color: black; }
@@ -125,9 +113,6 @@
                 line-height: 1.3 !important;  /* 줄 간격 살짝 좁힘 */
                 padding: 0.2rem !important;   /* 카드 안쪽 여백 축소 */
                 margin-bottom: 0.1rem !important; /* 카드 사이 간격 축소 */
-                border: 1px solid #eee; 
-                break-inside: avoid;
-                page-break-inside: avoid;
             }
 
             /* 2. 논문 제목(strong) 크기 미세 조정 */
@@ -157,7 +142,7 @@
     </style>
 
     <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Person", "name": "Goo, Sungwoo", "profile_image": "profile.jpg", "jobTitle": "Postdoctoral Researcher / Bio AI Researcher", "affiliation": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University", "about": "I am a researcher bridging deep learning architectures and dynamical systems. My background is in pharmacometrics. This allows me to approach neural network optimization as a continuous, balanced system. <br> My recent work solves the fundamental instability of Backpropagation Through Time (BPTT) in LLMs. I developed Phasor Memory Networks (PMNet) using unitary phasor dynamics. This breakthrough enables scalable, explicit long-term memory. <br> Currently, I am expanding these mechanics. My next goal is to build stable models for lifelong learning and memory consolidation.", "email": "swgoo91@gmail.com", "location": "Daejeon, South Korea", "orcid": "0000-0003-2809-5921", "linkedin": "https://www.linkedin.com/in/swgoo", "github": "https://github.com/swgoo", "research_interests": ["Next-Generation Neural Architectures & Learning Mechanics", "Stable Backpropagation & Long-Context Explicit Memory", "Continual Learning & Memory Consolidation Models", "Dynamical Systems in Deep Learning (Inspired by Pharmacometrics & QSP)"], "experience": [{"title": "Postdoctoral Researcher", "period": "2026.03 - Present", "organization": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University"}, {"title": "Postdoctoral Researcher", "period": "2024.09 - 2026.02", "organization": "Institute of Drug Research and Development, College of Pharmacy, Chungnam National University"}], "education": [{"degree": "Ph.D. in Bio AI Convergence", "period": "2021.09 - 2024.08", "school": "Chungnam National University"}, {"degree": "Master of Pharmacy", "period": "2016.03 - 2018.02", "school": "Chungnam National University"}, {"degree": "Pharm Doctor (PharmD)", "period": "2012.03 - 2016.02", "school": "Chungnam National University"}], "skills": {"Languages": "Python, R", "Frameworks": "PyTorch, NONMEM"}, "other": [{"title": "Military Service", "period": "2019.06 - 2021.04"}, {"title": "Local Pharmacy", "period": "2018.03 - 2019.05"}]}
+    {"@context": "https://schema.org", "@type": "Person", "name": "Goo, Sungwoo", "profile_image": "profile.jpg", "jobTitle": "Postdoctoral Researcher / Bio AI Researcher", "affiliation": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University", "about": "I am a researcher intersecting deep learning architecture and dynamical systems. With a background in pharmacometrics, I approach neural network optimization by understanding learning dynamics as continuous, balanced systems. My recent work focuses on solving the fundamental instability of Backpropagation Through Time (BPTT) in LLMs. By introducing unitary phasor dynamics, I developed Phasor Memory Networks (PMNet)—an architecture that enables scalable, explicit long-term memory. I am currently exploring how to expand these principles toward stable lifelong learning and memory consolidation models.", "email": "swgoo91@gmail.com", "location": "Daejeon, South Korea", "orcid": "0000-0003-2809-5921", "linkedin": "https://www.linkedin.com/in/swgoo", "github": "https://github.com/swgoo", "research_interests": ["Next-Generation Neural Architectures & Learning Mechanics", "Stable Backpropagation & Long-Context Explicit Memory", "Continual Learning & Memory Consolidation Models", "Dynamical Systems in Deep Learning (Inspired by Pharmacometrics & QSP)"], "experience": [{"title": "Postdoctoral Researcher", "period": "2026.03 - Present", "organization": "Senior Health Convergence Research Center, College of Pharmacy, Chungnam National University"}, {"title": "Postdoctoral Researcher", "period": "2024.09 - 2026.02", "organization": "Institute of Drug Research and Development, College of Pharmacy, Chungnam National University"}], "education": [{"degree": "Ph.D. in Bio AI Convergence", "period": "2021.09 - 2024.08", "school": "Chungnam National University"}, {"degree": "Master of Pharmacy", "period": "2016.03 - 2018.02", "school": "Chungnam National University"}, {"degree": "Pharm Doctor (PharmD)", "period": "2012.03 - 2016.02", "school": "Chungnam National University"}], "skills": {"Languages": "Python, R", "Frameworks": "PyTorch, NONMEM"}, "other": [{"title": "Military Service", "period": "2019.06 - 2021.04"}, {"title": "Local Pharmacy", "period": "2018.03 - 2019.05"}]}
     </script>
 </head>
 <body>
@@ -202,9 +187,7 @@
 
         <section id="about">
             <h2>About Me</h2>
-            <div class="grid">
-                <p>I am a researcher bridging deep learning architectures and dynamical systems. My background is in pharmacometrics. This allows me to approach neural network optimization as a continuous, balanced system. <br> My recent work solves the fundamental instability of Backpropagation Through Time (BPTT) in LLMs. I developed Phasor Memory Networks (PMNet) using unitary phasor dynamics. This breakthrough enables scalable, explicit long-term memory. <br> Currently, I am expanding these mechanics. My next goal is to build stable models for lifelong learning and memory consolidation.</p>
-            </div>
+            <p>I am a researcher intersecting deep learning architecture and dynamical systems. With a background in pharmacometrics, I approach neural network optimization by understanding learning dynamics as continuous, balanced systems. My recent work focuses on solving the fundamental instability of Backpropagation Through Time (BPTT) in LLMs. By introducing unitary phasor dynamics, I developed Phasor Memory Networks (PMNet)—an architecture that enables scalable, explicit long-term memory. I am currently exploring how to expand these principles toward stable lifelong learning and memory consolidation models.</p>
         </section>
 
         <section id="research">
@@ -323,22 +306,32 @@
             <h2>Featured Publications</h2>
             
             <article>
-                <strong>Phasor Attention: Mean Root Square Normalization for Phase Manifold Preservation</strong><br>
-                <small>Sungwoo Goo and Hwi-yeol Yun and Sangkeun Jung</small>
-                <br>
-                <small><i>arXiv</i>, 2026</small>
-                
-                <div style="margin-top: 0.5rem;"><a href="https://arxiv.org/abs/2607.17822" target="_blank" class="no-print" style="font-size: 0.8rem;">10.48550/arXiv.2607.17822</a></div>
-                
-            </article>
-            
-            <article>
                 <strong>Phasor Memory Networks: Stable Backpropagation Through Time for Scalable Explicit Memory</strong><br>
                 <small>Goo, Sungwoo and Yun, Hwi-yeol and Jung, Sangkeun</small>
                 <br>
                 <small><i>arXiv</i>, 2026</small>
                 
                 <div style="margin-top: 0.5rem;"><a href="https://arxiv.org/abs/2605.13370" target="_blank" class="no-print" style="font-size: 0.8rem;">10.48550/ARXIV.2605.13370</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Consolidator: Learning Persistent Routed Memory Across Context Boundaries</strong><br>
+                <small>Sungwoo Goo and Hwi-yeol Yun and Sangkeun Jung</small>
+                <br>
+                <small><i>arXiv</i>, 2026</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="https://arxiv.org/abs/2608.11701" target="_blank" class="no-print" style="font-size: 0.8rem;">10.48550/arXiv.2608.11701</a></div>
+                
+            </article>
+            
+            <article>
+                <strong>Phasor Attention: Mean Root Square Normalization for Phase Manifold Preservation</strong><br>
+                <small>Sungwoo Goo and Hwi-yeol Yun and Sangkeun Jung</small>
+                <br>
+                <small><i>arXiv</i>, 2026</small>
+                
+                <div style="margin-top: 0.5rem;"><a href="https://arxiv.org/abs/2607.17822" target="_blank" class="no-print" style="font-size: 0.8rem;">10.48550/arXiv.2607.17822</a></div>
                 
             </article>
             
@@ -359,16 +352,6 @@
                 <small><i>Bioinformatics</i>, 2026</small>
                 
                 <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.1093/bioinformatics/btag213" target="_blank" class="no-print" style="font-size: 0.8rem;">10.1093/bioinformatics/btag213</a></div>
-                
-            </article>
-            
-            <article>
-                <strong>Absorption Distribution Metabolism Excretion and Toxicity Property Prediction Utilizing a Pre-Trained Natural Language Processing Model and Its Applications in Early-Stage Drug Development</strong><br>
-                <small>Jung, Woojin and Goo, Sungwoo and Hwang, Taewook and Lee, Hyunjung and Kim, Young-Kuk and Chae, Jung-woo and Yun, Hwi-yeol and Jung, Sangkeun</small>
-                <br>
-                <small><i>Pharmaceuticals</i>, 2024</small>
-                
-                <div style="margin-top: 0.5rem;"><a href="http://dx.doi.org/10.3390/PH17030382" target="_blank" class="no-print" style="font-size: 0.8rem;">10.3390/ph17030382</a></div>
                 
             </article>
             
@@ -393,7 +376,7 @@
 
     <footer class="container">
         <hr>
-        <center><small>Last updated: 2026.07.21</small></center>
+        <center><small>Last updated: 2026.08.13</small></center>
     </footer>
 
     <script>
